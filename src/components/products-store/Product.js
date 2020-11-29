@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class Product extends Component {
   render() {
     let {product} = this.props;
-    console.log(product);
     return (
       <div className="col-lg-4 col-md-6 mb-r">
         <div className="card text-center card-cascade narrower">
@@ -13,14 +12,14 @@ class Product extends Component {
               className="img-fluid"
               alt={product.image}
             />
-            <a>
+            <a href="#/">
               <div className="mask waves-light waves-effect waves-light"></div>
             </a>
           </div>
           <div className="card-body">
             <h4 className="card-title">
               <strong>
-                <a>{product.name}</a>
+                <a href="#/">{product.name}</a>
               </strong>
             </h4>
 
@@ -32,6 +31,7 @@ class Product extends Component {
               <span className="left">{product.price}$</span>
               <span className="right">
                 <a
+                  href="#/"
                   className="btn-floating blue-gradient"
                   data-toggle="tooltip"
                   data-placement="top"
