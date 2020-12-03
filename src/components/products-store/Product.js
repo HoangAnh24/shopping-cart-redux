@@ -37,6 +37,7 @@ class Product extends Component {
                   data-placement="top"
                   title=""
                   data-original-title="Add to Cart"
+                  onClick={() => this.onAddToCart(product)}
                 >
                   <i className="fa fa-shopping-cart"></i>
                 </a>
@@ -64,6 +65,10 @@ class Product extends Component {
       );
     }
     return (result);
+  }
+
+  onAddToCart = (product) => {
+    this.props.onAddToCart(product);
   }
 }
 
