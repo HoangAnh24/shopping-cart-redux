@@ -21,3 +21,11 @@ export const actionRemoveProductInCart = (product) => {
         product,
     }
 }
+
+export const actionUpdateProductInCart = (product, quantity) => {
+    return {
+        type : Types.UPDATE_QUANTITY_PRODUCT_TO_CART,
+        product,
+        quantity
+    }
+}

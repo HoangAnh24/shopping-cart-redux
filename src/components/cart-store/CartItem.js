@@ -3,6 +3,7 @@ import * as Message from './../../constants/Message';
 class CartItem extends Component {
   render() {
     let { item } = this.props;
+    let { quantity } = item;
     return (
       <tr>
         <th scope="row">
@@ -19,17 +20,19 @@ class CartItem extends Component {
         </td>
         <td>{item.product.price}$</td>
         <td className="center-on-small-only">
-          <span className="qty">{item.quantity}</span>
+          <span className="qty">{quantity}</span>
           <div className="btn-group radio-group" data-toggle="buttons">
             <label
               className="btn btn-sm btn-primary
                                         btn-rounded waves-effect waves-light"
+              onClick={ () => this.onUpdateQuantity(item.product, item.quantity - 1) }
             >
               <a href="#/">—</a>
             </label>
             <label
               className="btn btn-sm btn-primary
                                         btn-rounded waves-effect waves-light"
+                                        onClick={ () => this.onUpdateQuantity(item.product, item.quantity + 1) }
             >
               <a href="#/">+</a>
             </label>
@@ -51,6 +54,14 @@ class CartItem extends Component {
         </td>
       </tr>
     );
+  }
+
+  onUpdateQuantity = (product, quantity) => {
+    if (quantity > 0) {
+      let { onUpdateProductInCart, onChangeMessage } = this.props;
+      onUpdateProductInCart(product, quantity);
+      onChangeMessage(Message.MSG_UPDATE_TO_CART_SUCCSES);
+    }
   }
 
   showSubTotals = (price, quantity) => {
