@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import * as Message from './../../constants/Message';
 class CartItem extends Component {
   render() {
     let { item } = this.props;
@@ -44,6 +44,7 @@ class CartItem extends Component {
             data-placement="top"
             title=""
             data-original-title="Remove item"
+            onClick={ () => this.onDeleteItem(item.product) }
           >
             X
           </button>
@@ -54,6 +55,12 @@ class CartItem extends Component {
 
   showSubTotals = (price, quantity) => {
     return (price * quantity);
+  }
+
+  onDeleteItem = (product) => {
+    let { onDeleteProductInCart, onChangeMessage } = this.props;
+    onDeleteProductInCart(product);
+    onChangeMessage(Message.MSG_DELLETE_TO_CART_SUCCSES);
   }
 }
 
